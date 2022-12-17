@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "patients")
-public class Patient {
+@Table(name = "global")
+public class PatientsGlobal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,11 +18,11 @@ public class Patient {
     @Column(name = "total_confirmed")
     private int totalConfirmed;
 
-    @Column(name = "new_dead")
-    private int newDead;
+    @Column(name = "new_deaths")
+    private int newDeaths;
 
-    @Column(name = "total_dead")
-    private int totalDead;
+    @Column(name = "total_deaths")
+    private int totalDeaths;
 
     @Column(name = "new_recovered")
     private int newRecovered;
@@ -33,7 +33,7 @@ public class Patient {
     @Column(name = "date_time")
     private LocalDateTime dateTime;
 
-    public Patient() {
+    public PatientsGlobal() {
     }
 
     public int getId() {
@@ -60,20 +60,20 @@ public class Patient {
         this.totalConfirmed = totalConfirmed;
     }
 
-    public int getNewDead() {
-        return newDead;
+    public int getNewDeaths() {
+        return newDeaths;
     }
 
-    public void setNewDead(int newDead) {
-        this.newDead = newDead;
+    public void setNewDeaths(int newDead) {
+        this.newDeaths = newDead;
     }
 
-    public int getTotalDead() {
-        return totalDead;
+    public int getTotalDeaths() {
+        return totalDeaths;
     }
 
-    public void setTotalDead(int totalDead) {
-        this.totalDead = totalDead;
+    public void setTotalDeaths(int totalDead) {
+        this.totalDeaths = totalDead;
     }
 
     public int getNewRecovered() {
