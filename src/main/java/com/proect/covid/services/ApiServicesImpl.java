@@ -19,7 +19,7 @@ public class ApiServicesImpl implements ApisServices {
 
 
     @Override
-    public String getJason() throws RestClientException {
+    public String getJson() throws RestClientException {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response = restTemplate.exchange(
                 URL, HttpMethod.GET, null, String.class);
