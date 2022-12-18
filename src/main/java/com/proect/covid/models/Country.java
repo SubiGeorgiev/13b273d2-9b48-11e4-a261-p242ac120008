@@ -1,11 +1,11 @@
 package com.proect.covid.models;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @Entity
-@Table(name = "by_country")
-public class PatientsByCountry {
+@Table(name = "by_countries")
+public class Country {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,21 +43,18 @@ public class PatientsByCountry {
     private int totalRecovered;
 
     @Column(name = "date_time")
-    private LocalDateTime dateTime;
+    private Instant dateTime;
 
-    @Column(name = "premium")
-    private String premium;
-
-    public PatientsByCountry() {
+    public Country() {
     }
 
     public int getId() {
         return id;
     }
 
-//    public void setId(int id) {
-//        this.id = id;
-//    }
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getKeyId() {
         return keyId;
@@ -139,19 +136,11 @@ public class PatientsByCountry {
         this.totalRecovered = totalRecovered;
     }
 
-    public LocalDateTime getDateTime() {
+    public Instant getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
+    public void setDateTime(Instant dateTime) {
         this.dateTime = dateTime;
-    }
-
-    public String getPremium() {
-        return premium;
-    }
-
-    public void setPremium(String premium) {
-        this.premium = premium;
     }
 }
