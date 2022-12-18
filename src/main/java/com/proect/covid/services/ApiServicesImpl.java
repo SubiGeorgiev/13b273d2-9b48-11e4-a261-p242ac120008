@@ -10,7 +10,6 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class ApiServicesImpl implements ApisServices {
-
     private static final String URL = "https://api.covid19api.com/summary";
 
     @Autowired
@@ -23,6 +22,8 @@ public class ApiServicesImpl implements ApisServices {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response = restTemplate.exchange(
                 URL, HttpMethod.GET, null, String.class);
+
+        //JsonDto map = restTemplate.getForObject(URL, JsonDto.class);
 
         return response.getBody();
     }
