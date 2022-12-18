@@ -2,11 +2,10 @@ package com.proect.covid.repositories.contracts;
 
 import com.proect.covid.models.Country;
 
-import java.util.List;
+import java.time.Instant;
 
 public interface CountriesRepository {
 
     public void saveDayByCountry(Country country);
-    public List<Country> getByCountry(Country country);
-    public List<Country> getByDate();
+    public Country getDayByCountry(String code, Instant day);
 }
