@@ -6,8 +6,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
+import org.hibernate.query.Query;
+import javax.persistence.EntityNotFoundException;
+import java.time.Instant;
 
 @Repository
 public class CountriesRepositoryImpl implements CountriesRepository {
@@ -27,13 +28,18 @@ public class CountriesRepositoryImpl implements CountriesRepository {
     }
 
     @Override
-    public List<Country> getByCountry(Country country) {
-        return null;
-    }
+    public Country getDayByCountry(String code, Instant day) {
 
-    @Override
-    public List<Country> getByDate() {
-        //TODO
-        return null;
+        try(Session session = sessionFactory.openSession()){
+            Query<Country> query = session.createQuery(
+                    "from Country where countryCode =: countryCode"
+                    , Country.class);
+            query.setParameter("countryCode",code);
+
+            if(query.list().size()==0){
+                throw new EntityNotFoundException("No entries found");
+            }
+            return (Country) query.list().get(0);
+        }
     }
 }
